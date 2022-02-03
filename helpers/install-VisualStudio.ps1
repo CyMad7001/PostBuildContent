@@ -31,7 +31,8 @@ if ((Get-VSSetupInstance).InstallationVersion -ge "16.0") {
     Write-Host "Installing VS $($Version) with Base Workloads"
     $programFilesFolder=(&{if ($Version -gt 2019) {${env:ProgramFiles}} else {${env:ProgramFiles(x86)}}})
 
-    $commandArgs = @("--installPath `"$(Join-Path $programFilesFolder `"Microsoft Visual Studio\$($Version)\$($Sku)`")`"")
+    $commandArgs = @()
+    #$commandArgs += "--installPath `"$(Join-Path $programFilesFolder `"Microsoft Visual Studio\$($Version)\$($Sku)`")`""
     $commandArgs += "--add Microsoft.VisualStudio.Workload.CoreEditor;includeRecommended"
     $commandArgs += "--add Microsoft.VisualStudio.Workload.Data;includeRecommended"
     #$commandArgs += "--add Microsoft.VisualStudio.Component.SQL.SSDT;includeRecommended"
@@ -41,10 +42,10 @@ if ((Get-VSSetupInstance).InstallationVersion -ge "16.0") {
     $commandArgs += "--add Microsoft.VisualStudio.Workload.Azure;includeRecommended"
     $commandArgs += "--add Microsoft.VisualStudio.Workload.NativeDesktop;includeRecommended"
     $commandArgs += "--add Microsoft.VisualStudio.Workload.VisualStudioExtension;includeRecommended"
-    $commandArgs += "--add Microsoft.Net.Component.4.6.1.TargetingPack"
-    $commandArgs += "--add Microsoft.Net.Component.4.6.2.TargetingPack"
-    $commandArgs += "--add Microsoft.Net.Component.4.7.TargetingPack"
-    $commandArgs += "--add Microsoft.Net.Component.4.7.1.TargetingPack"
+    #$commandArgs += "--add Microsoft.Net.Component.4.6.1.TargetingPack"
+    #$commandArgs += "--add Microsoft.Net.Component.4.6.2.TargetingPack"
+    #$commandArgs += "--add Microsoft.Net.Component.4.7.TargetingPack"
+    #$commandArgs += "--add Microsoft.Net.Component.4.7.1.TargetingPack"
     $commandArgs += "--add Microsoft.Net.ComponentGroup.4.8.DeveloperTools"
     $commandArgs += "--add Microsoft.VisualStudio.ComponentGroup.ArchitectureTools.Managed"
     $commandArgs += "--add Microsoft.VisualStudio.Component.TestTools.WebLoadTest"
